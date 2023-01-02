@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color_dgreen: #3cb500;
+  --color_yellow: #d0ff00;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(141, 102, 30);
+}
+
+svg {
+  height: 90vh;
+}
+
+path {
+  stroke: #fff;
+  fill: transparent;
+  transition: 0.4s;
+  cursor: pointer;
+}
+path:hover {
+  fill: #fff;
+  transform: translate(-5px, -5px);
+}
+
+.rbox {
+  width: 460px;
+  position: absolute;
+  right: 150px;
+  top: 30px;
+  color: #fff;
+  font-size: 30px;
+}
+.rbox hr {
+  margin-top: 0px;
+  margin-bottom: red;
+}
+
+.box h4,
+.box p {
+  margin: 0;
+}
+.box h4 {
+  font-size: 34px;
+}
+.box p {
+  font-size: 20px;
+}/*# sourceMappingURL=style.css.map */
