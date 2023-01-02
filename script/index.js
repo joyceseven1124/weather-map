@@ -43,8 +43,11 @@ async function fetchWeather(region, day) {
 
   const now_weather = document.querySelector(".now_weather");
   now_place.innerHTML =
-    "天氣：" +
+    "縣市：" +
     weatherInfo["region"] +
+    "<br />" +
+    "天氣：" +
+    weatherInfo["Wx"] +
     "<br />" +
     "降雨機率：" +
     weatherInfo["PoP"] +
