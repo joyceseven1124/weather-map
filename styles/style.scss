@@ -62,17 +62,25 @@ path {
   svg {
     transform: translateY(50px);
   }
-  .rbox {
+  .modal {
     padding: 10px;
     height: 300px;
   }
-  .rbox h1 {
+  .modal h1 {
     font-size: 28px;
   }
-  .rbox h4 {
+  .modal h4 {
     font-size: 25px;
   }
 }
 
 @import "./modal";
 @import "./sunny";
+
+.title {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  writing-mode: vertical-lr;
+  font-size: 2rem;
+}

@@ -1,9 +1,11 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: var(--modal-bg);
+  background-color: var(--blue);
+  //   background-image: url("");
   z-index: 2;
   display: none;
+  animation: animatedBackground 75s linear infinite;
 }
 
 .modal {
@@ -26,22 +28,25 @@
 
   transition: all 0.5s ease-in-out;
   &.active {
-    display: block;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    display: block;
+    padding-top: 10px;
+    padding-left: 15px;
     opacity: 0.9;
     scale: 1;
+    transform: translate(-50%, -50%);
     transition: all 0.5s ease-in-out;
     animation: 0.8s linear modalMotion;
   }
   hr {
-    margin-top: 0px;
+    margin-block: 5px;
     margin-bottom: red;
   }
 }
 
 .box {
+  padding-top: 10px;
   h4,
   p {
     margin: 0;
@@ -71,5 +76,14 @@
   }
   100% {
     transform: translate(-40%, -50%);
+  }
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 2250px;
   }
 }
