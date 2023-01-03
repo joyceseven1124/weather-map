@@ -58,23 +58,25 @@ path:hover {
   svg {
     transform: translateY(50px);
   }
-  .rbox {
+  .modal {
     padding: 10px;
     height: 300px;
   }
-  .rbox h1 {
+  .modal h1 {
     font-size: 28px;
   }
-  .rbox h4 {
+  .modal h4 {
     font-size: 25px;
   }
 }
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: var(--modal-bg);
+  background-color: var(--blue);
   z-index: 2;
   display: none;
+  -webkit-animation: animatedBackground 75s linear infinite;
+          animation: animatedBackground 75s linear infinite;
 }
 
 .modal {
@@ -98,21 +100,26 @@ path:hover {
   transition: all 0.5s ease-in-out;
 }
 .modal.active {
-  display: block;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
+  padding-top: 10px;
+  padding-left: 15px;
   opacity: 0.9;
   scale: 1;
+  transform: translate(-50%, -50%);
   transition: all 0.5s ease-in-out;
   -webkit-animation: 0.8s linear modalMotion;
           animation: 0.8s linear modalMotion;
 }
 .modal hr {
-  margin-top: 0px;
+  margin-block: 5px;
   margin-bottom: red;
 }
 
+.box {
+  padding-top: 10px;
+}
 .box h4,
 .box p {
   margin: 0;
@@ -155,6 +162,22 @@ path:hover {
   }
   100% {
     transform: translate(-40%, -50%);
+  }
+}
+@-webkit-keyframes animatedBackground {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 2250px;
+  }
+}
+@keyframes animatedBackground {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 2250px;
   }
 }
 .circle {
@@ -243,4 +266,12 @@ path:hover {
   100% {
     transform: scale(0.8);
   }
+}
+.title {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  -ms-writing-mode: tb-lr;
+      writing-mode: vertical-lr;
+  font-size: 2rem;
 }/*# sourceMappingURL=style.css.map */
