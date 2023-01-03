@@ -140,10 +140,15 @@ async function fetchWeather(region, day) {
     "最高溫度：" +
     weatherInfo["MaxT"] +
     "°C";
+  document.querySelector("#modal").classList.add("active");
+  document.querySelector(".overlay").style.display = "block";
+  document.querySelector(".modal").style.opacity = 0.9;
+  document.querySelector("body").style.overflowY = "hidden";
 }
 
 for (const city of countryList) {
-  document.getElementById(city.tage).addEventListener("touchstart", () => {
+  document.getElementById(city.tage).addEventListener("touchstart", (e) => {
+    e.preventDefault();
     console.log(city.place);
     region = city.place; //「手機版」點擊後的區域名稱
     fetchWeather(region, day);
@@ -151,9 +156,20 @@ for (const city of countryList) {
 }
 
 for (const city of countryList) {
-  document.getElementById(city.tage).addEventListener("click", () => {
+  document.getElementById(city.tage).addEventListener("click", (e) => {
+    e.preventDefault();
     console.log(city.place);
     region = city.place; //「電腦版」點擊後的區域名稱
     fetchWeather(region, day);
   });
 }
+
+document.querySelector(".overlay").addEventListener("click", () => {
+  if (document.querySelector(".modal ").classList.value === "modal active") {
+    document.querySelector(".modal ").style.opacity = 0;
+  }
+
+  document.querySelector(".overlay ").style.display = "none";
+  document.querySelector("body").style.overflowY = "none";
+  document.querySelector(".modal ").classList.remove("active");
+});

@@ -4,41 +4,111 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "MyWebFont";
+  src: url("../assets/Cubic_11_1.013_R.woff2") format("woff2"), url("../assets/Cubic_11_1.013_R.woff") format("woff");
+}
 :root {
-  --color_dgreen: #3cb500;
-  --color_yellow: #d0ff00;
+  --tw-bg2: #5b6fb4;
+  --dark-blue: #190cab;
+  --red: hsl(0, 63%, 48%);
+  --modal-bg: #ffd513;
+  --tw-bg: #f2d05a;
+  --blue: #2c6ac8;
+  --storke: #1b1a19;
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
-  background-color: rgb(141, 102, 30);
+  font-family: "MyWebFont", Fallback, sans-serif;
+  cursor: url(../assets/cursor-hand.png) 2 2, pointer;
+  overflow: hidden;
 }
 
 svg {
+  max-width: 90%;
   height: 90vh;
+  transform: translateX(40%) translateY(50px);
 }
 
 path {
-  stroke: #fff;
+  stroke: var(--storke);
+  stroke-width: 4.5;
   fill: transparent;
   transition: 0.4s;
-  cursor: pointer;
 }
 path:hover {
-  fill: #fff;
+  fill: var(--blue);
   transform: translate(-5px, -5px);
 }
 
-.rbox {
-  width: 460px;
-  position: absolute;
-  right: 150px;
-  top: 30px;
-  color: #fff;
-  font-size: 30px;
+#container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--tw-bg);
 }
-.rbox hr {
+
+@media screen and (max-width: 1400px) {
+  svg {
+    transform: translateY(50px);
+  }
+}
+@media screen and (max-width: 415px) {
+  svg {
+    transform: translateY(50px);
+  }
+  .rbox {
+    padding: 10px;
+    height: 300px;
+  }
+  .rbox h1 {
+    font-size: 28px;
+  }
+  .rbox h4 {
+    font-size: 25px;
+  }
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--modal-bg);
+  z-index: 2;
+  display: none;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 150%;
+  left: 150%;
+  width: min(80%, 600px);
+  height: 500px;
+  background-color: rgb(255, 252, 214);
+  color: rgb(23, 18, 18);
+  font-size: 1.5em;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border-top: 5px solid black;
+  border-left: 5px solid black;
+  box-shadow: 5px 5px black;
+  scale: 0;
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+}
+.modal.active {
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+  scale: 1;
+  transition: all 0.5s ease-in-out;
+  -webkit-animation: 0.8s linear modalMotion;
+          animation: 0.8s linear modalMotion;
+}
+.modal hr {
   margin-top: 0px;
   margin-bottom: red;
 }
@@ -52,4 +122,125 @@ path:hover {
 }
 .box p {
   font-size: 20px;
+}
+
+@-webkit-keyframes modalMotion {
+  0% {
+    opacity: 0;
+    transform: translate(-150%, -50%);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-110%, -50%);
+  }
+  75% {
+    transform: translate(-55%, calc(-50% + 5px));
+  }
+  100% {
+    transform: translate(-40%, -50%);
+  }
+}
+
+@keyframes modalMotion {
+  0% {
+    opacity: 0;
+    transform: translate(-150%, -50%);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-110%, -50%);
+  }
+  75% {
+    transform: translate(-55%, calc(-50% + 5px));
+  }
+  100% {
+    transform: translate(-40%, -50%);
+  }
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  -webkit-animation: ripple 15s infinite;
+          animation: ripple 15s infinite;
+  box-shadow: 0px 0px 1px 0px #508fb9;
+}
+
+.small {
+  width: 200px;
+  height: 200px;
+  left: -100px;
+  bottom: -100px;
+}
+
+.medium {
+  width: 400px;
+  height: 400px;
+  left: -200px;
+  bottom: -200px;
+}
+
+.large {
+  width: 600px;
+  height: 600px;
+  left: -300px;
+  bottom: -300px;
+}
+
+.xlarge {
+  width: 800px;
+  height: 800px;
+  left: -400px;
+  bottom: -400px;
+}
+
+.xxlarge {
+  width: 1000px;
+  height: 1000px;
+  left: -500px;
+  bottom: -500px;
+}
+
+.shade1 {
+  opacity: 0.2;
+}
+
+.shade2 {
+  opacity: 0.5;
+}
+
+.shade3 {
+  opacity: 0.7;
+}
+
+.shade4 {
+  opacity: 0.8;
+}
+
+.shade5 {
+  opacity: 0.9;
+}
+
+@-webkit-keyframes ripple {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.8);
+  }
 }/*# sourceMappingURL=style.css.map */
