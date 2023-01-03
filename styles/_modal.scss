@@ -1,0 +1,75 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--modal-bg);
+  z-index: 2;
+  display: none;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 150%;
+  left: 150%;
+  width: min(80%, 600px);
+  height: 500px;
+  background-color: rgb(255, 252, 214);
+  color: rgb(23, 18, 18);
+  font-size: 1.5em;
+  backdrop-filter: blur(5px);
+  border-top: 5px solid black;
+  border-left: 5px solid black;
+  box-shadow: 5px 5px black;
+  scale: 0;
+  border-radius: 20px;
+
+  transition: all 0.5s ease-in-out;
+  &.active {
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+    scale: 1;
+    transition: all 0.5s ease-in-out;
+    animation: 0.8s linear modalMotion;
+  }
+  hr {
+    margin-top: 0px;
+    margin-bottom: red;
+  }
+}
+
+.box {
+  h4,
+  p {
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 34px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+@keyframes modalMotion {
+  0% {
+    opacity: 0;
+    transform: translate(-150%, -50%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-110%, -50%);
+  }
+  75% {
+    transform: translate(-55%, calc(-50% + 5px));
+  }
+  100% {
+    transform: translate(-40%, -50%);
+  }
+}
