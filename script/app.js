@@ -146,7 +146,7 @@ async function fetchWeather(region, day) {
     "°C";
   modalEl.classList.add("active");
   overlayEl.style.display = "block";
-  modalEl.style.opacity = 0.9;
+  modalEl.style.opacity = 1;
   bodyEl.style.overflowY = "hidden";
 }
 
@@ -161,26 +161,9 @@ for (const city of countryList) {
 
 for (const city of countryList) {
   document.getElementById(city.tage).addEventListener("click", (e) => {
-    console.log(city.tage);
     e.preventDefault();
     console.log(city.place);
     region = city.place; //「電腦版」點擊後的區域名稱
-    fetchWeather(region, day);
-  });
-}
-
-function gethelp() {
-  const citySelector = document.getElementById("citySelector");
-  citySelector.style.cssText = "display:block";
-}
-
-for (let i = 0; i < 19; i++) {
-  document.getElementById("helpList" + i).addEventListener("click", (e) => {
-    // document.getElementById("helpList" + i).style.cssText =
-    //   "background-color: #363737;";
-    console.log(e.target.textContent);
-    e.preventDefault();
-    region = e.target.textContent; //「電腦版」點擊後的幫助清單
     fetchWeather(region, day);
   });
 }
@@ -193,37 +176,4 @@ document.querySelector(".overlay").addEventListener("click", () => {
   overlayEl.style.display = "none";
   bodyEl.style.overflowY = "none";
   modalEl.classList.remove("active");
-});
-
-const arrow = document.getElementById("arrow");
-const items = document.querySelectorAll("li");
-const container = document.getElementById("citySelector");
-let currentItem = 0;
-
-document.addEventListener("keydown", function (event) {
-  event.preventDefault();
-  switch (event.key) {
-    case "ArrowDown":
-      if (arrow.offsetTop + arrow.offsetHeight < container.offsetHeight) {
-        if (currentItem < items.length - 1) {
-          currentItem++;
-          arrow.style.top = items[currentItem].offsetTop + "px";
-        }
-      } else {
-        if (currentItem < items.length - 1) {
-          currentItem++;
-          arrow.style.top = items[currentItem].offsetTop + "px";
-          container.scrollTop = items[currentItem].offsetTop;
-        }
-      }
-      break;
-    case "ArrowUp":
-      // move the arrow to the previous item
-      if (currentItem > 0) {
-        currentItem--;
-        arrow.style.top = items[currentItem].offsetTop + "px";
-        container.scrollTop = items[currentItem].offsetTop;
-      }
-      break;
-  }
 });
