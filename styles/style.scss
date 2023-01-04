@@ -11,13 +11,14 @@
 }
 
 :root {
-  --tw-bg2: #5b6fb4;
+  --stroke-fill: #5b6fb4;
   --dark-blue: #190cab;
   --red: hsl(0, 63%, 48%);
-  --modal-bg: #ffd513;
+  --modal-bg: rgb(255, 252, 214);
   --tw-bg: #f2d05a;
   --blue: #2c6ac8;
   --storke: #1b1a19;
+  --tw-cyan: #01afae;
 }
 
 body {
@@ -27,28 +28,11 @@ body {
   overflow: hidden;
 }
 
-svg {
-  max-width: 90%;
-  height: 90vh;
-  transform: translateX(40%) translateY(50px);
-}
-
-path {
-  stroke: var(--storke); //線條的背景是stroke
-  stroke-width: 4.5;
-  fill: transparent; //SVG的背景是fill
-  transition: 0.4s;
-
-  &:hover {
-    fill: var(--blue);
-    transform: translate(-5px, -5px);
-  }
-}
-
 #container {
   position: relative;
   width: 100%;
   min-height: 100vh;
+<<<<<<< HEAD
   background-color: url(/tv.png);
 }
 
@@ -72,15 +56,15 @@ path {
   .modal h4 {
     font-size: 25px;
   }
+=======
+  background-color: #bef9f9;
+  // background-image: url(../assets/4.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+>>>>>>> 33bce708c9ab43681d9597de7fa313bcdd1594d7
 }
 
+@import "./tw";
 @import "./modal";
 @import "./sunny";
-
-.title {
-  position: absolute;
-  top: 30%;
-  right: 5%;
-  writing-mode: vertical-lr;
-  font-size: 2rem;
-}
