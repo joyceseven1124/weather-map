@@ -100,12 +100,13 @@ async function fetchWeather(region, day) {
 
   const records = rawData["records"]["location"][0]["weatherElement"];
   const Wx = records[0]["time"][0]["parameter"]["parameterName"];
+  const WxValue = records[0]["time"][0]["parameter"]["parameterValue"];
   const PoP = records[1]["time"][0]["parameter"]["parameterName"];
   const MinT = records[2]["time"][0]["parameter"]["parameterName"];
   const CI = records[3]["time"][0]["parameter"]["parameterName"];
   const MaxT = records[4]["time"][0]["parameter"]["parameterName"];
 
-  const regionWeather = [Wx, PoP, MinT, CI, MaxT];
+  const regionWeather = [Wx, PoP, MinT, CI, MaxT,WxValue];
 
   const weatherInfo = {
     region: region,
@@ -115,6 +116,7 @@ async function fetchWeather(region, day) {
     MinT: regionWeather[2],
     CI: regionWeather[3],
     MaxT: regionWeather[4],
+    WxValue: regionWeather[5]
   };
 
   console.log(weatherInfo);
@@ -146,8 +148,56 @@ async function fetchWeather(region, day) {
     "°C";
   modalEl.classList.add("active");
   overlayEl.style.display = "block";
-  modalEl.style.opacity = 0.9;
+  modalEl.style.opacity = 1;
   bodyEl.style.overflowY = "hidden";
+
+  const weatherTypes = {
+    isClear: [1],
+    isSunnywithCloudy:[2, 3, 4, 12, 15, 16, 19, 21, 24, 25, 34],
+    isOvercast: [5, 6, 7, 17, 22, 26, 27, 28],
+    isThunderstorm: [8, 9, 10, 13, 18, 20, 29, 30, 41],
+    isRain: [11, 14, 31, 32, 33, 35, 36, 38,39],
+    isSnowing: [23, 37, 42],
+  };
+  //console.log(weatherInfo["WxValue"])
+  weatherNumber = Number(weatherInfo["WxValue"]);
+  const weatherIcon = document.querySelector("#weatherIcon");
+  const weatherPlace = document.querySelector(".weather");
+
+  if(weatherTypes["isClear"].includes(weatherNumber)){
+    overlayEl.style.backgroundColor = "yellow";
+    weatherIcon.src = "./assets/isClear.png";
+
+  }else if(weatherTypes["isOvercast"].includes(weatherNumber)){
+    overlayEl.style.backgroundColor = "gray";
+    weatherIcon.src = "./assets/isOvercast.png";
+    weatherPlace.style.bottom = "60px";
+
+  }else if(weatherTypes["isThunderstorm"].includes(weatherNumber)){
+    overlayEl.style.backgroundColor = "#d33030";
+    weatherIcon.src = "./assets/isThunderstorm.png";
+    //weatherPlace.style.bottom = "10px";
+
+  }else if(weatherTypes["isRain"].includes(weatherNumber)){
+    overlayElweatherBackgroundColor.style.backgroundColor = "#4454d4";
+    weatherIcon.src = "./assets/isRain.png";
+    weatherPlace.style.bottom = "40px";
+
+  }else if(weatherTypes["isSnowing"].includes(weatherNumber)){
+    overlayEl.style.backgroundColor = "#ff66ff";
+    weatherIcon.src = "./assets/isSnowing.png";
+    weatherPlace.style.bottom = "20px";
+
+  }else if(weatherTypes["isSunnywithCloudy"].includes(weatherNumber)){
+    overlayEl.style.backgroundColor = "#aff758";
+    weatherIcon.src = "./assets/isSunnywithCloudy.png";
+    weatherPlace.style.bottom = "60px";
+
+  };
+  //測試區
+  //overlayEl.style.backgroundColor = "yellow";
+  //weatherIcon.src = "./assets/isSunnywithCloudy.png";
+  //weatherPlace.style.bottom = "60px";
 }
 
 for (const city of countryList) {
