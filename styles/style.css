@@ -6,7 +6,8 @@
 
 @font-face {
   font-family: "MyWebFont";
-  src: url("../assets/Cubic_11_1.013_R.woff2") format("woff2"), url("../assets/Cubic_11_1.013_R.woff") format("woff");
+  src: url("../assets/Cubic_11_1.013_R.woff2") format("woff2"),
+    url("../assets/Cubic_11_1.013_R.woff") format("woff");
 }
 :root {
   --tw-bg2: #5b6fb4;
@@ -76,7 +77,7 @@ path:hover {
   z-index: 2;
   display: none;
   -webkit-animation: animatedBackground 75s linear infinite;
-          animation: animatedBackground 75s linear infinite;
+  animation: animatedBackground 75s linear infinite;
 }
 
 .modal {
@@ -91,7 +92,7 @@ path:hover {
   color: rgb(23, 18, 18);
   font-size: 1.5em;
   -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   border-top: 5px solid black;
   border-left: 5px solid black;
   box-shadow: 5px 5px black;
@@ -110,7 +111,7 @@ path:hover {
   transform: translate(-50%, -50%);
   transition: all 0.5s ease-in-out;
   -webkit-animation: 0.8s linear modalMotion;
-          animation: 0.8s linear modalMotion;
+  animation: 0.8s linear modalMotion;
 }
 .modal hr {
   margin-block: 5px;
@@ -185,7 +186,7 @@ path:hover {
   border-radius: 50%;
   background: white;
   -webkit-animation: ripple 15s infinite;
-          animation: ripple 15s infinite;
+  animation: ripple 15s infinite;
   box-shadow: 0px 0px 1px 0px #508fb9;
 }
 
@@ -272,6 +273,6 @@ path:hover {
   top: 30%;
   right: 5%;
   -ms-writing-mode: tb-lr;
-      writing-mode: vertical-lr;
+  writing-mode: vertical-lr;
   font-size: 2rem;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
