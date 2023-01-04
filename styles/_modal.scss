@@ -2,8 +2,8 @@
   position: absolute;
   inset: 0;
   background-color: var(--blue);
-  //   background-image: url("");
-  z-index: 2;
+  background-image: url("../assets/pixel-bg.png");
+  z-index: 5;
   display: none;
   animation: animatedBackground 75s linear infinite;
 }
@@ -11,33 +11,35 @@
 .modal {
   display: none;
   position: absolute;
-  z-index: 3;
+  z-index: 6;
   top: 150%;
   left: 150%;
   width: min(80%, 600px);
-  height: 500px;
-  background-color: rgb(255, 252, 214);
+  min-height: 500px;
+  background-color: var(--modal-bg);
   color: rgb(23, 18, 18);
   font-size: 1.5em;
   backdrop-filter: blur(5px);
   border-top: 5px solid black;
   border-left: 5px solid black;
   box-shadow: 5px 5px black;
-  scale: 0;
+  opacity: 0.9;
+  scale: 1;
   border-radius: 20px;
-
   transition: all 0.5s ease-in-out;
+
   &.active {
     top: 50%;
     left: 50%;
     display: block;
     padding-top: 10px;
-    padding-left: 15px;
+    padding-left: 40px;
     opacity: 0.9;
     scale: 1;
     transform: translate(-50%, -50%);
     transition: all 0.5s ease-in-out;
-    animation: 0.8s linear modalMotion;
+    transform-origin: center;
+    animation: 1.2s linear modalMotion;
   }
   hr {
     margin-block: 5px;
@@ -85,5 +87,65 @@
   }
   to {
     background-position: 2250px;
+  }
+}
+
+.weather {
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+  background-color: transparent;
+  width: 200px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .modal.active {
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .weather {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal.active {
+    padding-left: 25px;
+  }
+  .weather {
+    width: 150px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .modal {
+    padding: 10px;
+    height: 300px;
+    &.active {
+      padding-left: 20px;
+    }
+  }
+
+  .modal h1 {
+    font-size: 28px;
+  }
+  .modal h4 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .weather {
+    bottom: 50px;
+    width: 100px;
   }
 }

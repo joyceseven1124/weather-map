@@ -1,5 +1,9 @@
 console.log("TEST.");
 
+const bodyEl = document.querySelector("body");
+const overlayEl = document.querySelector(".overlay ");
+const modalEl = document.querySelector(".modal ");
+
 const countryList = [
   {
     tage: "taipei_city",
@@ -140,10 +144,10 @@ async function fetchWeather(region, day) {
     "最高溫度：" +
     weatherInfo["MaxT"] +
     "°C";
-  document.querySelector("#modal").classList.add("active");
-  document.querySelector(".overlay").style.display = "block";
-  document.querySelector(".modal").style.opacity = 0.9;
-  document.querySelector("body").style.overflowY = "hidden";
+  modalEl.classList.add("active");
+  overlayEl.style.display = "block";
+  modalEl.style.opacity = 0.9;
+  bodyEl.style.overflowY = "hidden";
 }
 
 for (const city of countryList) {
@@ -165,11 +169,11 @@ for (const city of countryList) {
 }
 
 document.querySelector(".overlay").addEventListener("click", () => {
-  if (document.querySelector(".modal ").classList.value === "modal active") {
-    document.querySelector(".modal ").style.opacity = 0;
+  if (modalEl.classList.value === "modal active") {
+    modalEl.style.opacity = 0;
   }
 
-  document.querySelector(".overlay ").style.display = "none";
-  document.querySelector("body").style.overflowY = "none";
-  document.querySelector(".modal ").classList.remove("active");
+  overlayEl.style.display = "none";
+  bodyEl.style.overflowY = "none";
+  modalEl.classList.remove("active");
 });
