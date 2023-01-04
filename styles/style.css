@@ -34,7 +34,7 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: var(--tw-bg);
-  background-image: url(../assets/tw-background.png);
+  background-image: url(../assets/tw-bg.png);
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -382,8 +382,9 @@ path:hover {
   top: calc(50% - 114px);
   left: calc(50% + 155px);
   z-index: 3;
-  transform: translate(-50%, -50%);
+  display: none;
   height: 50px;
+  transform: translate(-50%, -50%);
 }
 
 .citySelector {
@@ -392,15 +393,16 @@ path:hover {
   height: 300px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(126, 125, 122);
+  display: none;
   padding: 10px;
-  font-size: 1.5rem;
   border: 5px dashed;
   z-index: 2;
+  font-size: 1.5rem;
+  background-color: rgb(126, 125, 122);
+  transform: translate(-50%, -50%);
   overflow-y: scroll;
   overflow-x: hidden;
-  scrollbar-width: 5px;
+  scrollbar-width: thin;
   outline: 15px solid rgb(126, 125, 122);
   outline-offset: 0px;
 }
@@ -409,7 +411,6 @@ path:hover {
   list-style-type: none;
   padding-inline: 40px;
   margin-bottom: 5px;
-  transition: all 0.5s ease-in;
 }
 
 .overlay {
