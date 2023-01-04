@@ -59,7 +59,7 @@ path:hover {
   top: 30%;
   right: 5%;
   -ms-writing-mode: tb-lr;
-      writing-mode: vertical-lr;
+  writing-mode: vertical-lr;
   font-size: 2rem;
 }
 
@@ -69,12 +69,12 @@ path:hover {
   bottom: 10px;
   width: 150px;
   -webkit-animation: 7s linear walkingMotion infinite;
-          animation: 7s linear walkingMotion infinite;
+  animation: 7s linear walkingMotion infinite;
 }
 .walking img {
   width: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 @-webkit-keyframes walkingMotion {
@@ -365,7 +365,7 @@ path:hover {
     bottom: 50px;
     width: 80px;
     -webkit-animation: 2.5s linear walkingMotion_mobile infinite;
-            animation: 2.5s linear walkingMotion_mobile infinite;
+    animation: 2.5s linear walkingMotion_mobile infinite;
   }
 }
 .overlay {
@@ -410,14 +410,9 @@ path:hover {
   scale: 1;
   transform: translate(-50%, -50%);
   transition: all 0.5s ease-in-out;
-<<<<<<< HEAD
-  -webkit-animation: 0.8s linear modalMotion;
-  animation: 0.8s linear modalMotion;
-=======
   transform-origin: center;
   -webkit-animation: 1.2s linear modalMotion;
-          animation: 1.2s linear modalMotion;
->>>>>>> 33bce708c9ab43681d9597de7fa313bcdd1594d7
+  animation: 1.2s linear modalMotion;
 }
 .modal hr {
   margin-block: 5px;
@@ -437,6 +432,133 @@ path:hover {
 .box p {
   font-size: 20px;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  cursor: grab;
+  scroll-behavior: smooth;
+}
+
+.arrow {
+  position: absolute;
+}
+
+li {
+  list-style-type: none;
+  padding-left: 40px;
+  padding-bottom: 20px;
+}
+
+/* li:hover::before {
+  content: "▶";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 10px;
+} */
+
+#close {
+  position: fixed;
+  top: calc(50% - 114px);
+  left: calc(50% + 155px);
+  z-index: 200;
+  transform: translate(-50%, -50%);
+  height: 50px;
+}
+
+/* .citySelector {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(126, 125, 122);
+  padding: 10px;
+  font-size: 1.5rem;
+  border: 5px dashed;
+  z-index: 5;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  outline: 15px solid rgb(126, 125, 122);
+  outline-offset: 0px;
+  box-shadow: -20px 20px black;
+  display: none;
+} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  cursor: grab;
+  scroll-behavior: smooth;
+}
+
+.arrow {
+  position: absolute;
+}
+
+li {
+  list-style-type: none;
+  padding-left: 40px;
+  padding-bottom: 20px;
+}
+
+/* li:hover::before {
+  content: "▶";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 10px;
+} */
+
+.citySelector {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(126, 125, 122);
+  padding: 10px;
+  font-size: 1.5rem;
+  border: 5px dashed;
+  z-index: 2;
+  overflow-y: scroll;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.citySelector li {
+  width: 100%;
+  list-style-type: none;
+  padding-inline: 40px;
+  margin-bottom: 5px;
+  transition: all 0.5s ease-in;
+  cursor: pointer;
+}
+
+.citySelector li:hover {
+  background-color: #363737;
+}
+/* .citySelector li:hover::before {
+  content: "▶";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 20px;
+  transform: translateY(-25%);
+} */
 
 @-webkit-keyframes modalMotion {
   0% {
@@ -498,7 +620,7 @@ path:hover {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 950px) {
@@ -628,16 +750,4 @@ path:hover {
   100% {
     transform: scale(0.8);
   }
-<<<<<<< HEAD
-}
-.title {
-  position: absolute;
-  top: 30%;
-  right: 5%;
-  -ms-writing-mode: tb-lr;
-  writing-mode: vertical-lr;
-  font-size: 2rem;
 } /*# sourceMappingURL=style.css.map */
-=======
-}/*# sourceMappingURL=style.css.map */
->>>>>>> 33bce708c9ab43681d9597de7fa313bcdd1594d7
