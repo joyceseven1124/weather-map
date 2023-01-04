@@ -1,7 +1,7 @@
 svg {
   max-width: 90%;
   height: 90vh;
-  transform: translateX(40%) translateY(50px);
+  transform: translateX(40%) translateY(20px);
 }
 
 path {
@@ -18,8 +18,8 @@ path {
 
 .title {
   position: absolute;
-  top: 30%;
-  right: 5%;
+  top: 10%;
+  left: 5%;
   writing-mode: vertical-lr;
   font-size: 2rem;
 }
@@ -177,10 +177,11 @@ path {
     scale: 1.2;
     transform: translateY(-50px);
   }
+
   80% {
     left: 80%;
     scale: 1;
-    transform: translateY(0px);
+    transform: translateY(-70px);
   }
 
   100% {
@@ -197,12 +198,48 @@ path {
 }
 @media screen and (max-width: 415px) {
   svg {
-    transform: translateY(50px);
+    transform: translateY(-40px);
   }
 
   .walking {
-    bottom: 50px;
+    bottom: 0px;
     width: 80px;
     animation: 2.5s linear walkingMotion_mobile infinite;
+  }
+}
+
+#close {
+  position: fixed;
+  top: calc(50% - 114px);
+  left: calc(50% + 155px);
+  z-index: 3;
+  display: none;
+  height: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.citySelector {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  display: none;
+  padding: 10px;
+  border: 5px dashed;
+  z-index: 2;
+  font-size: 1.5rem;
+  background-color: rgb(126, 125, 122);
+  transform: translate(-50%, -50%);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  outline: 15px solid rgb(126, 125, 122);
+  outline-offset: 0px;
+  li {
+    width: 100%;
+    list-style-type: none;
+    padding-inline: 40px;
+    margin-bottom: 5px;
   }
 }

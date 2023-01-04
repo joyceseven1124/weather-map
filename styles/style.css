@@ -11,36 +11,46 @@
 }
 :root {
   --stroke-fill: #5b6fb4;
-  --dark-blue: #190cab;
-  --red: hsl(0, 63%, 48%);
-  --modal-bg: rgb(255, 252, 214);
-  --tw-bg: #f2d05a;
+  --modal-bg: #fff;
   --blue: #2c6ac8;
   --storke: #1b1a19;
-  --tw-cyan: #01afae;
+  --tw-bg: #bef9f9;
+  --isClear: yellow;
+  --isSunnywithCloudy: #aff758;
+  --isOvercast: gray;
+  --isThunderstorm: #d33030;
+  --isRain: #4454d4;
+  --isSnowing: #ff66ff;
 }
 
 body {
   width: 100%;
   font-family: "MyWebFont", Fallback, sans-serif;
   cursor: url(../assets/cursor-hand.png) 2 2, pointer;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #container {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-color: #bef9f9;
+  background-color: var(--tw-bg);
+  background-image: url(../assets/tw-bg.png);
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
 }
 
+@media (orientation: portrait) {
+  #container {
+    background-size: contain;
+    background-image: url(../assets/tw-vertical-background.png);
+  }
+}
 svg {
   max-width: 90%;
   height: 90vh;
-  transform: translateX(40%) translateY(50px);
+  transform: translateX(40%) translateY(20px);
 }
 
 path {
@@ -56,8 +66,8 @@ path:hover {
 
 .title {
   position: absolute;
-  top: 30%;
-  right: 5%;
+  top: 10%;
+  left: 5%;
   -ms-writing-mode: tb-lr;
   writing-mode: vertical-lr;
   font-size: 2rem;
@@ -313,7 +323,7 @@ path:hover {
   80% {
     left: 80%;
     scale: 1;
-    transform: translateY(0px);
+    transform: translateY(-70px);
   }
   100% {
     left: 100%;
@@ -344,7 +354,7 @@ path:hover {
   80% {
     left: 80%;
     scale: 1;
-    transform: translateY(0px);
+    transform: translateY(-70px);
   }
   100% {
     left: 100%;
@@ -359,15 +369,51 @@ path:hover {
 }
 @media screen and (max-width: 415px) {
   svg {
-    transform: translateY(50px);
+    transform: translateY(-40px);
   }
   .walking {
-    bottom: 50px;
+    bottom: 0px;
     width: 80px;
     -webkit-animation: 2.5s linear walkingMotion_mobile infinite;
     animation: 2.5s linear walkingMotion_mobile infinite;
   }
 }
+#close {
+  position: fixed;
+  top: calc(50% - 114px);
+  left: calc(50% + 155px);
+  z-index: 3;
+  display: none;
+  height: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.citySelector {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  display: none;
+  padding: 10px;
+  border: 5px dashed;
+  z-index: 2;
+  font-size: 1.5rem;
+  background-color: rgb(126, 125, 122);
+  transform: translate(-50%, -50%);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  outline: 15px solid rgb(126, 125, 122);
+  outline-offset: 0px;
+}
+.citySelector li {
+  width: 100%;
+  list-style-type: none;
+  padding-inline: 40px;
+  margin-bottom: 5px;
+}
+
 .overlay {
   position: absolute;
   inset: 0;
