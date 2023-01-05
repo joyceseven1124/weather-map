@@ -390,6 +390,12 @@ path:hover {
   transform: translate(-50%, -50%);
 }
 
+.arrow {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 #close {
   position: fixed;
   top: 10px;
@@ -613,3 +619,7 @@ path:hover {
     font-size: 23px;
   }
 }/*# sourceMappingURL=style.css.map */
+
+
+
+
