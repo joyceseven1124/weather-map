@@ -35,42 +35,11 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  background-color: url(/tv.png);
-}
-
-@media screen and (max-width: 1400px) {
-  svg {
-    transform: translateY(50px);
-  }
-}
-
-@media screen and (max-width: 415px) {
-  svg {
-    transform: translateY(50px);
-  }
-  .modal {
-    padding: 10px;
-    height: 300px;
-  }
-  .modal h1 {
-    font-size: 28px;
-  }
-  .modal h4 {
-    font-size: 25px;
-  }
-=======
-  background-color: #bef9f9;
-  // background-image: url(../assets/4.png);
-=======
   background-color: var(--tw-bg);
   background-image: url(../assets/tw-bg.png);
->>>>>>> 1300581269695b6fa088a2e171b12c9373e5931a
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
->>>>>>> 33bce708c9ab43681d9597de7fa313bcdd1594d7
 }
 
 @media (orientation: portrait) {
@@ -82,4 +51,4 @@ body {
 
 @import "./tw";
 @import "./modal";
-@import "./sunny";
+// @import "./sunny";
