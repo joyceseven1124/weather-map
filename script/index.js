@@ -106,7 +106,7 @@ async function fetchWeather(region, day) {
   const CI = records[3]["time"][0]["parameter"]["parameterName"];
   const MaxT = records[4]["time"][0]["parameter"]["parameterName"];
 
-  const regionWeather = [Wx, PoP, MinT, CI, MaxT,WxValue];
+  const regionWeather = [Wx, PoP, MinT, CI, MaxT, WxValue];
 
   const weatherInfo = {
     region: region,
@@ -116,7 +116,7 @@ async function fetchWeather(region, day) {
     MinT: regionWeather[2],
     CI: regionWeather[3],
     MaxT: regionWeather[4],
-    WxValue: regionWeather[5]
+    WxValue: regionWeather[5],
   };
 
   console.log(weatherInfo);
@@ -153,10 +153,10 @@ async function fetchWeather(region, day) {
 
   const weatherTypes = {
     isClear: [1],
-    isSunnywithCloudy:[2, 3, 4, 12, 15, 16, 19, 21, 24, 25, 34],
+    isSunnywithCloudy: [2, 3, 4, 12, 15, 16, 19, 21, 24, 25, 34],
     isOvercast: [5, 6, 7, 17, 22, 26, 27, 28],
     isThunderstorm: [8, 9, 10, 13, 18, 20, 29, 30, 41],
-    isRain: [11, 14, 31, 32, 33, 35, 36, 38,39],
+    isRain: [11, 14, 31, 32, 33, 35, 36, 38, 39],
     isSnowing: [23, 37, 42],
   };
   //console.log(weatherInfo["WxValue"])
@@ -164,36 +164,30 @@ async function fetchWeather(region, day) {
   const weatherIcon = document.querySelector("#weatherIcon");
   const weatherPlace = document.querySelector(".weather");
 
-  if(weatherTypes["isClear"].includes(weatherNumber)){
+  if (weatherTypes["isClear"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "yellow";
     weatherIcon.src = "./assets/isClear.png";
-
-  }else if(weatherTypes["isOvercast"].includes(weatherNumber)){
+  } else if (weatherTypes["isOvercast"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "gray";
     weatherIcon.src = "./assets/isOvercast.png";
     weatherPlace.style.bottom = "60px";
-
-  }else if(weatherTypes["isThunderstorm"].includes(weatherNumber)){
+  } else if (weatherTypes["isThunderstorm"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "#d33030";
     weatherIcon.src = "./assets/isThunderstorm.png";
     //weatherPlace.style.bottom = "10px";
-
-  }else if(weatherTypes["isRain"].includes(weatherNumber)){
-    overlayElweatherBackgroundColor.style.backgroundColor = "#4454d4";
+  } else if (weatherTypes["isRain"].includes(weatherNumber)) {
+    overlayEl.style.backgroundColor = "#4454d4";
     weatherIcon.src = "./assets/isRain.png";
     weatherPlace.style.bottom = "40px";
-
-  }else if(weatherTypes["isSnowing"].includes(weatherNumber)){
+  } else if (weatherTypes["isSnowing"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "#ff66ff";
     weatherIcon.src = "./assets/isSnowing.png";
     weatherPlace.style.bottom = "20px";
-
-  }else if(weatherTypes["isSunnywithCloudy"].includes(weatherNumber)){
+  } else if (weatherTypes["isSunnywithCloudy"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "#aff758";
     weatherIcon.src = "./assets/isSunnywithCloudy.png";
     weatherPlace.style.bottom = "60px";
-
-  };
+  }
   //測試區
   //overlayEl.style.backgroundColor = "yellow";
   //weatherIcon.src = "./assets/isSunnywithCloudy.png";
@@ -222,12 +216,45 @@ for (const city of countryList) {
 function gethelp() {
   const citySelector = document.getElementById("citySelector");
   citySelector.style.cssText = "display:block";
+  document.querySelector("#close").style.display = "block";
+  document.querySelector("#close").style.opacity = "1";
+}
+
+function citySelectorclose() {
+  const citySelector = document.getElementById("citySelector");
+  citySelector.style.cssText = "display:none";
+  document.querySelector("#close").style.cssText = "display:none";
+}
+
+document.querySelector("#close").addEventListener("click", () => {
+  citySelectorclose();
+});
+
+for (let i = 0; i < 19; i++) {
+  //onmouseover
+  document.getElementById("helpList" + i).addEventListener("mouseover", (e) => {
+    document.getElementById("helpList" + i).style.cssText =
+      "background-color: #363737";
+    document.getElementById("arrow").style.cssText = "display:none";
+    currentItem = i;
+  });
+}
+
+for (let i = 0; i < 19; i++) {
+  //onmouseout
+  document.getElementById("helpList" + i).addEventListener("mouseout", (e) => {
+    document.getElementById("helpList" + i).style.cssText =
+      "background-color: rgb(126, 125, 122)";
+    document.getElementById("arrow").style.cssText = "display:none";
+  });
 }
 
 for (let i = 0; i < 19; i++) {
   document.getElementById("helpList" + i).addEventListener("click", (e) => {
     // document.getElementById("helpList" + i).style.cssText =
     //   "background-color: #363737;";
+    // document.getElementById("arrow").style.cssText = "display:none";
+    citySelectorclose();
     console.log(e.target.textContent);
     e.preventDefault();
     region = e.target.textContent; //「電腦版」點擊後的幫助清單
@@ -252,6 +279,11 @@ let currentItem = 0;
 
 document.addEventListener("keydown", function (event) {
   event.preventDefault();
+  for (let i = 0; i < 19; i++) {
+    document.getElementById("helpList" + i).style.cssText =
+      "background-color: rgb(126, 125, 122)";
+  }
+  document.getElementById("arrow").style.cssText = "display:block";
   switch (event.key) {
     case "ArrowDown":
       if (arrow.offsetTop + arrow.offsetHeight < container.offsetHeight) {
@@ -275,5 +307,9 @@ document.addEventListener("keydown", function (event) {
         container.scrollTop = items[currentItem].offsetTop;
       }
       break;
+    case "Enter":
+      citySelectorclose();
+      region = items[currentItem].textContent;
+      fetchWeather(region, day);
   }
 });
