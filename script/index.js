@@ -176,7 +176,7 @@ async function fetchWeather(region, day) {
     weatherIcon.src = "./assets/isThunderstorm.png";
     //weatherPlace.style.bottom = "10px";
   } else if (weatherTypes["isRain"].includes(weatherNumber)) {
-    overlayElweatherBackgroundColor.style.backgroundColor = "#4454d4";
+    overlayEl.style.backgroundColor = "#4454d4";
     weatherIcon.src = "./assets/isRain.png";
     weatherPlace.style.bottom = "40px";
   } else if (weatherTypes["isSnowing"].includes(weatherNumber)) {
