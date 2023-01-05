@@ -216,7 +216,19 @@ for (const city of countryList) {
 function gethelp() {
   const citySelector = document.getElementById("citySelector");
   citySelector.style.cssText = "display:block";
+  document.querySelector("#close").style.display = "block";
+  document.querySelector("#close").style.opacity = "1";
 }
+
+function citySelectorclose() {
+  const citySelector = document.getElementById("citySelector");
+  citySelector.style.cssText = "display:none";
+  document.querySelector("#close").style.cssText = "display:none";
+}
+
+document.querySelector("#close").addEventListener("click", () => {
+  citySelectorclose();
+});
 
 for (let i = 0; i < 19; i++) {
   //onmouseover
@@ -242,6 +254,7 @@ for (let i = 0; i < 19; i++) {
     // document.getElementById("helpList" + i).style.cssText =
     //   "background-color: #363737;";
     // document.getElementById("arrow").style.cssText = "display:none";
+    citySelectorclose();
     console.log(e.target.textContent);
     e.preventDefault();
     region = e.target.textContent; //「電腦版」點擊後的幫助清單
@@ -295,6 +308,7 @@ document.addEventListener("keydown", function (event) {
       }
       break;
     case "Enter":
+      citySelectorclose();
       region = items[currentItem].textContent;
       fetchWeather(region, day);
   }
