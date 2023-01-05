@@ -224,7 +224,7 @@ for (let i = 0; i < 19; i++) {
     document.getElementById("helpList" + i).style.cssText =
       "background-color: #363737";
     document.getElementById("arrow").style.cssText = "display:none";
-    currentItem = i - 1;
+    currentItem = i;
   });
 }
 
@@ -293,9 +293,9 @@ document.addEventListener("keydown", function (event) {
         arrow.style.top = items[currentItem].offsetTop + "px";
         container.scrollTop = items[currentItem].offsetTop;
       }
+      break;
     case "Enter":
       region = items[currentItem].textContent;
       fetchWeather(region, day);
-      break;
   }
 });
