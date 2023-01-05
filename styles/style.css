@@ -438,6 +438,12 @@ path:hover {
   margin-bottom: 5px;
 }
 
+.arrow {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -613,7 +619,3 @@ path:hover {
     font-size: 23px;
   }
 }/*# sourceMappingURL=style.css.map */
-
-
-
-
