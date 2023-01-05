@@ -3,6 +3,7 @@ console.log("TEST.");
 const bodyEl = document.querySelector("body");
 const overlayEl = document.querySelector(".overlay ");
 const modalEl = document.querySelector(".modal ");
+const citySelectorContainer = document.querySelector(".citySelector-container");
 
 const countryList = [
   {
@@ -94,7 +95,7 @@ day = now_Date.toISOString().split(".")[0];
 
 async function fetchWeather(region, day) {
   let url = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-480FD02B-2155-49AB-B24B-1796E44F6333&locationName=${region}`;
-
+  citySelectorclose();
   const response = await fetch(url);
   const rawData = await response.json();
 
@@ -165,26 +166,26 @@ async function fetchWeather(region, day) {
   const weatherPlace = document.querySelector(".weather");
 
   if (weatherTypes["isClear"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "yellow";
+    overlayEl.style.backgroundColor = "var(--isClear)";
     weatherIcon.src = "./assets/isClear.png";
   } else if (weatherTypes["isOvercast"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "gray";
+    overlayEl.style.backgroundColor = "var(--isOvercast)";
     weatherIcon.src = "./assets/isOvercast.png";
     weatherPlace.style.bottom = "60px";
   } else if (weatherTypes["isThunderstorm"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "#d33030";
+    overlayEl.style.backgroundColor = "var(--isThunderstorm)";
     weatherIcon.src = "./assets/isThunderstorm.png";
     //weatherPlace.style.bottom = "10px";
   } else if (weatherTypes["isRain"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "#4454d4";
+    overlayEl.style.backgroundColor = "var(--isRain)";
     weatherIcon.src = "./assets/isRain.png";
     weatherPlace.style.bottom = "40px";
   } else if (weatherTypes["isSnowing"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "#ff66ff";
+    overlayEl.style.backgroundColor = "var(--isSnowing)";
     weatherIcon.src = "./assets/isSnowing.png";
     weatherPlace.style.bottom = "20px";
   } else if (weatherTypes["isSunnywithCloudy"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "#aff758";
+    overlayEl.style.backgroundColor = "var(--isSunnywithCloudy)";
     weatherIcon.src = "./assets/isSunnywithCloudy.png";
     weatherPlace.style.bottom = "60px";
   }
@@ -214,16 +215,11 @@ for (const city of countryList) {
 }
 
 function gethelp() {
-  const citySelector = document.getElementById("citySelector");
-  citySelector.style.cssText = "display:block";
-  document.querySelector("#close").style.display = "block";
-  document.querySelector("#close").style.opacity = "1";
+  citySelectorContainer.style.display = "block";
 }
 
 function citySelectorclose() {
-  const citySelector = document.getElementById("citySelector");
-  citySelector.style.cssText = "display:none";
-  document.querySelector("#close").style.cssText = "display:none";
+  citySelectorContainer.style.display = "none";
 }
 
 document.querySelector("#close").addEventListener("click", () => {
