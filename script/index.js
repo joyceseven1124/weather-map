@@ -264,6 +264,7 @@ document.addEventListener('keydown', function(event) {
                   container.scrollTop = items[currentItem].offsetTop;
             }
       }
+      region = items[currentItem].textContent;
       break;
     case 'ArrowUp':
       // move the arrow to the previous item
@@ -272,17 +273,17 @@ document.addEventListener('keydown', function(event) {
         arrow.style.top = items[currentItem].offsetTop + 'px';
         container.scrollTop = items[currentItem].offsetTop
       }
+      region = items[currentItem].textContent;
       break;
-
+      
     case 'Enter':
       
       if(citySelectorContainer.style.display === "none"){
-        region = ""
+        region = "";
        
       }else{
-        region = items[currentItem].textContent;
+        //region = items[currentItem].textContent;
         fetchWeather(region, day);
-        
       }
       citySelectorclose();
   }
@@ -291,7 +292,7 @@ document.addEventListener('keydown', function(event) {
 
 document.addEventListener('touchstart', function(event) {
   // get the position of the touch
-  const touchY = event.target.offsetTop
+  const touchY = event.target.offsetTop;
 
   // find the closest li element to the touch position
   let closestItem = null;
@@ -317,6 +318,7 @@ items.forEach(element => {
 
 function mouseEnterEffect(e){
   arrow.style.top = this.offsetTop + 'px';
+  region = this.textContent;
   arrow.style.backgroundColor = "rgba(0, 0, 0, 0)";
   this.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
 }
