@@ -154,10 +154,10 @@ async function fetchWeather(region, day) {
 
   const weatherTypes = {
     isClear: [1],
-    isSunnywithCloudy:[2, 3, 4, 12, 15, 16, 19, 21, 24, 25, 34],
+    isSunnywithCloudy: [2, 3, 4, 12, 15, 16, 19, 21, 24, 25, 34],
     isOvercast: [5, 6, 7, 17, 22, 26, 27, 28],
     isThunderstorm: [8, 9, 10, 13, 18, 20, 29, 30, 41],
-    isRain: [11, 14, 31, 32, 33, 35, 36, 38,39],
+    isRain: [11, 14, 31, 32, 33, 35, 36, 38, 39],
     isSnowing: [23, 37, 42],
   };
   //console.log(weatherInfo["WxValue"])
@@ -165,35 +165,30 @@ async function fetchWeather(region, day) {
   const weatherIcon = document.querySelector("#weatherIcon");
   const weatherPlace = document.querySelector(".weather");
 
-  if(weatherTypes["isClear"].includes(weatherNumber)){
+  if (weatherTypes["isClear"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "var(--isClear)";
     weatherIcon.src = "./assets/isClear.png";
-
-  }else if(weatherTypes["isOvercast"].includes(weatherNumber)){
+  } else if (weatherTypes["isOvercast"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "var(--isOvercast)";
     weatherIcon.src = "./assets/isOvercast.png";
     weatherPlace.style.bottom = "60px";
-
-  }else if(weatherTypes["isThunderstorm"].includes(weatherNumber)){
+  } else if (weatherTypes["isThunderstorm"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "var(--isThunderstorm)";
     weatherIcon.src = "./assets/isThunderstorm.png";
-    weatherPlace.style.bottom = "10px";
-
-  }else if(weatherTypes["isRain"].includes(weatherNumber)){
+    //weatherPlace.style.bottom = "10px";
+  } else if (weatherTypes["isRain"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "var(--isRain)";
     weatherIcon.src = "./assets/isRain.png";
     weatherPlace.style.bottom = "40px";
-
-  }else if(weatherTypes["isSnowing"].includes(weatherNumber)){
+  } else if (weatherTypes["isSnowing"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "var(--isSnowing)";
     weatherIcon.src = "./assets/isSnowing.png";
     weatherPlace.style.bottom = "20px";
-
-  }else if(weatherTypes["isSunnywithCloudy"].includes(weatherNumber)){
+  } else if (weatherTypes["isSunnywithCloudy"].includes(weatherNumber)) {
     overlayEl.style.backgroundColor = "var(--isSunnywithCloudy)";
     weatherIcon.src = "./assets/isSunnywithCloudy.png";
     weatherPlace.style.bottom = "60px";
-  };
+  }
   //測試區
   //overlayEl.style.backgroundColor = "yellow";
   //weatherIcon.src = "./assets/isSunnywithCloudy.png";
@@ -219,13 +214,49 @@ for (const city of countryList) {
   });
 }
 
-function gethelp() {  
+function gethelp() {
   citySelectorContainer.style.display = "block";
 }
 
-document.querySelector("#close").addEventListener("click", () => {
+function citySelectorclose() {
   citySelectorContainer.style.display = "none";
-})
+}
+
+document.querySelector("#close").addEventListener("click", () => {
+  citySelectorclose();
+});
+
+for (let i = 0; i < 19; i++) {
+  //onmouseover
+  document.getElementById("helpList" + i).addEventListener("mouseover", (e) => {
+    document.getElementById("helpList" + i).style.cssText =
+      "background-color: #363737";
+    document.getElementById("arrow").style.cssText = "display:none";
+    currentItem = i;
+  });
+}
+
+for (let i = 0; i < 19; i++) {
+  //onmouseout
+  document.getElementById("helpList" + i).addEventListener("mouseout", (e) => {
+    document.getElementById("helpList" + i).style.cssText =
+      "background-color: rgb(126, 125, 122)";
+    document.getElementById("arrow").style.cssText = "display:none";
+  });
+}
+
+for (let i = 0; i < 19; i++) {
+  document.getElementById("helpList" + i).addEventListener("click", (e) => {
+    // document.getElementById("helpList" + i).style.cssText =
+    //   "background-color: #363737;";
+    // document.getElementById("arrow").style.cssText = "display:none";
+    citySelectorclose();
+    console.log(e.target.textContent);
+    e.preventDefault();
+    region = e.target.textContent; //「電腦版」點擊後的幫助清單
+    fetchWeather(region, day);
+  });
+}
 
 document.querySelector(".overlay").addEventListener("click", () => {
   if (modalEl.classList.value === "modal active") {
@@ -237,116 +268,44 @@ document.querySelector(".overlay").addEventListener("click", () => {
   modalEl.classList.remove("active");
 });
 
-
-function citySelectorclose() {
-  citySelectorContainer.style.display = "none";
-}
-
-const menu = document.querySelector('citySelector-container');
-const arrow = document.getElementById('arrow');
-const items = document.querySelectorAll('li');
-const container = document.getElementById('citySelector');
+const arrow = document.getElementById("arrow");
+const items = document.querySelectorAll("li");
+const container = document.getElementById("citySelector");
 let currentItem = 0;
-document.addEventListener('keydown', function(event) {
-  event.preventDefault() ;
+
+document.addEventListener("keydown", function (event) {
+  event.preventDefault();
+  for (let i = 0; i < 19; i++) {
+    document.getElementById("helpList" + i).style.cssText =
+      "background-color: rgb(126, 125, 122)";
+  }
+  document.getElementById("arrow").style.cssText = "display:block";
   switch (event.key) {
-    case 'ArrowDown':
+    case "ArrowDown":
       if (arrow.offsetTop + arrow.offsetHeight < container.offsetHeight) {
-            if (currentItem < items.length - 1) {
-              currentItem++;
-              arrow.style.top = items[currentItem].offsetTop + 'px';
-            }
-      }else {
-            if (currentItem < items.length - 1) {
-                  currentItem++;
-                  arrow.style.top = items[currentItem].offsetTop + 'px';
-                  container.scrollTop = items[currentItem].offsetTop;
-            }
+        if (currentItem < items.length - 1) {
+          currentItem++;
+          arrow.style.top = items[currentItem].offsetTop + "px";
+        }
+      } else {
+        if (currentItem < items.length - 1) {
+          currentItem++;
+          arrow.style.top = items[currentItem].offsetTop + "px";
+          container.scrollTop = items[currentItem].offsetTop;
+        }
       }
       break;
-    case 'ArrowUp':
+    case "ArrowUp":
       // move the arrow to the previous item
       if (currentItem > 0) {
         currentItem--;
-        arrow.style.top = items[currentItem].offsetTop + 'px';
-        container.scrollTop = items[currentItem].offsetTop
+        arrow.style.top = items[currentItem].offsetTop + "px";
+        container.scrollTop = items[currentItem].offsetTop;
       }
       break;
-
-    case 'Enter':
-      
-      if(citySelectorContainer.style.display === "none"){
-        region = ""
-       
-      }else{
-        region = items[currentItem].textContent; 
-        fetchWeather(region, day);
-        
-      }
+    case "Enter":
       citySelectorclose();
+      region = items[currentItem].textContent;
+      fetchWeather(region, day);
   }
-
 });
-
-document.addEventListener('touchstart', function(event) {
-  // get the position of the touch
-  const touchY = event.target.offsetTop
-
-  // find the closest li element to the touch position
-  let closestItem = null;
-  let closestDistance = Infinity;
-  for (const item of items) {
-    const distance = Math.abs(touchY - item.offsetTop);
-    if (distance < closestDistance) {
-      closestItem = item;
-      closestDistance = distance;
-    }
-  }
-
-  // move the arrow to the closest li element
-  //arrow.style.left = closestItem.offsetLeft + 'px';
-  //arrow.style.top = closestItem.offsetTop + 'px';
-});
-
-
-items.forEach(element => {
-  element.addEventListener("mouseover",mouseEnterEffect)
-  element.addEventListener("mouseout",mouseMoveEffect)
-})
-
-function mouseEnterEffect(e){
-  arrow.style.top = this.offsetTop + 'px';
-  arrow.style.backgroundColor = "rgba(0, 0, 0, 0)";
-  this.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-}
-
-function mouseMoveEffect(e){
-  arrow.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-  this.style.backgroundColor = "";
-  arrow.classList.add(this.textContent)
-  if(arrow.classList.length > 2){
-    arrow.classList.remove(arrow.classList[1])
-  }
-}
-
-arrow.addEventListener("click",(e)=>{
-  region = arrow.classList[1]
-  fetchWeather(region, day)
-})
-
-const body = document.body;
-function goRocket(e){
-  if(e.type === "keydown"){
-    items.forEach(element => {
-      element.removeEventListener("mouseover",mouseEnterEffect)
-      element.removeEventListener("mouseout",mouseMoveEffect)
-    })
-  }else{
-    items.forEach(element => {
-      element.addEventListener("mouseover",mouseEnterEffect)
-      element.addEventListener("mouseout",mouseMoveEffect)
-    })
-  }
-}
-body.addEventListener('keydown', goRocket ,false) //偵測按下按鍵的行為
-body.addEventListener('mouseover', goRocket ,false)
