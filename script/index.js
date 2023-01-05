@@ -248,7 +248,6 @@ const items = document.querySelectorAll('li');
 const container = document.getElementById('citySelector');
 let currentItem = 0;
 document.addEventListener('keydown', function(event) {
-
   event.preventDefault() ;
   switch (event.key) {
     case 'ArrowDown':
@@ -275,9 +274,16 @@ document.addEventListener('keydown', function(event) {
       break;
 
     case 'Enter':
+      
+      if(citySelectorContainer.style.display === "none"){
+        region = ""
+       
+      }else{
+        region = items[currentItem].textContent; 
+        fetchWeather(region, day);
+        
+      }
       citySelectorclose();
-      region = items[currentItem].textContent; 
-      fetchWeather(region, day);
   }
 
 });
