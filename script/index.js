@@ -172,28 +172,27 @@ async function fetchWeather(region, day) {
   }else if(weatherTypes["isOvercast"].includes(weatherNumber)){
     overlayEl.style.backgroundColor = "var(--isOvercast)";
     weatherIcon.src = "./assets/isOvercast.png";
-    //weatherPlace.style.bottom = "60px";
+    weatherPlace.style.bottom = "60px";
 
   }else if(weatherTypes["isThunderstorm"].includes(weatherNumber)){
     overlayEl.style.backgroundColor = "var(--isThunderstorm)";
     weatherIcon.src = "./assets/isThunderstorm.png";
-    //weatherPlace.style.bottom = "10px";
+    weatherPlace.style.bottom = "10px";
 
   }else if(weatherTypes["isRain"].includes(weatherNumber)){
     overlayEl.style.backgroundColor = "var(--isRain)";
     weatherIcon.src = "./assets/isRain.png";
-    //weatherPlace.style.bottom = "40px";
+    weatherPlace.style.bottom = "40px";
 
   }else if(weatherTypes["isSnowing"].includes(weatherNumber)){
     overlayEl.style.backgroundColor = "var(--isSnowing)";
     weatherIcon.src = "./assets/isSnowing.png";
-    //weatherPlace.style.bottom = "20px";
+    weatherPlace.style.bottom = "20px";
 
   }else if(weatherTypes["isSunnywithCloudy"].includes(weatherNumber)){
     overlayEl.style.backgroundColor = "var(--isSunnywithCloudy)";
     weatherIcon.src = "./assets/isSunnywithCloudy.png";
-    //weatherPlace.style.bottom = "60px";
-
+    weatherPlace.style.bottom = "60px";
   };
   //測試區
   //overlayEl.style.backgroundColor = "yellow";

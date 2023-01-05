@@ -390,6 +390,12 @@ path:hover {
   transform: translate(-50%, -50%);
 }
 
+.arrow {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 #close {
   position: fixed;
   top: 10px;
@@ -436,12 +442,6 @@ path:hover {
   list-style-type: none;
   padding-inline: 40px;
   margin-bottom: 5px;
-}
-
-.arrow {
-  position: absolute;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .overlay {
@@ -619,3 +619,7 @@ path:hover {
     font-size: 23px;
   }
 }/*# sourceMappingURL=style.css.map */
+
+
+
+
