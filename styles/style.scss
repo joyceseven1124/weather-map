@@ -22,6 +22,8 @@
   --isThunderstorm: #d33030;
   --isRain: #4454d4;
   --isSnowing: #ff66ff;
+  --selector-bg: rgb(126, 125, 122);
+  --black-border: 5px solid black;
 }
 
 body {
@@ -34,7 +36,8 @@ body {
 #container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  // min-height: 100vh;
   background-color: var(--tw-bg);
   background-image: url(../assets/tw-bg.png);
   background-size: cover;
@@ -51,4 +54,3 @@ body {
 
 @import "./tw";
 @import "./modal";
-// @import "./sunny";
