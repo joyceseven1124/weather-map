@@ -154,12 +154,13 @@ async function fetchWeather(region, day) {
 
   const weatherTypes = {
     isClear: [1],
-    isSunnywithCloudy:[2, 3, 4, 12, 15, 16, 19, 21, 24, 25, 34],
-    isOvercast: [5, 6, 7, 17, 22, 26, 27, 28],
-    isThunderstorm: [8, 9, 10, 13, 18, 20, 29, 30, 41],
-    isRain: [11, 14, 31, 32, 33, 35, 36, 38,39],
+    isSunnywithCloudy:[2,3,19,24,25,26],
+    isOvercast: [4,5,6,7,9,20,27,28],
+    isThunderstorm: [15,16,17,18,21,22,33,34,35,36,41],
+    isRain: [8,10,11,12,13,14,29,30,31,32,38,39],
     isSnowing: [23, 37, 42],
   };
+  
   //console.log(weatherInfo["WxValue"])
   weatherNumber = Number(weatherInfo["WxValue"]);
   const weatherIcon = document.querySelector("#weatherIcon");
@@ -279,7 +280,7 @@ document.addEventListener('keydown', function(event) {
         region = ""
        
       }else{
-        region = items[currentItem].textContent; 
+        region = items[currentItem].textContent;
         fetchWeather(region, day);
         
       }
@@ -310,8 +311,8 @@ document.addEventListener('touchstart', function(event) {
 
 
 items.forEach(element => {
-  element.addEventListener("mouseover",mouseEnterEffect)
-  element.addEventListener("mouseout",mouseMoveEffect)
+  element.addEventListener("mouseover",mouseEnterEffect);
+  element.addEventListener("mouseout",mouseMoveEffect);
 })
 
 function mouseEnterEffect(e){
@@ -323,30 +324,30 @@ function mouseEnterEffect(e){
 function mouseMoveEffect(e){
   arrow.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
   this.style.backgroundColor = "";
-  arrow.classList.add(this.textContent)
+  arrow.classList.add(this.textContent);
   if(arrow.classList.length > 2){
-    arrow.classList.remove(arrow.classList[1])
+    arrow.classList.remove(arrow.classList[1]);
   }
 }
 
 arrow.addEventListener("click",(e)=>{
-  region = arrow.classList[1]
-  fetchWeather(region, day)
+  region = arrow.classList[1];
+  fetchWeather(region, day);
 })
 
 const body = document.body;
-function goRocket(e){
+function checkElementType(e){
   if(e.type === "keydown"){
     items.forEach(element => {
-      element.removeEventListener("mouseover",mouseEnterEffect)
-      element.removeEventListener("mouseout",mouseMoveEffect)
+      element.removeEventListener("mouseover",mouseEnterEffect);
+      element.removeEventListener("mouseout",mouseMoveEffect);
     })
   }else{
     items.forEach(element => {
-      element.addEventListener("mouseover",mouseEnterEffect)
-      element.addEventListener("mouseout",mouseMoveEffect)
+      element.addEventListener("mouseover",mouseEnterEffect);
+      element.addEventListener("mouseout",mouseMoveEffect);
     })
   }
 }
-body.addEventListener('keydown', goRocket ,false) //偵測按下按鍵的行為
-body.addEventListener('mouseover', goRocket ,false)
+body.addEventListener('keydown', checkElementType ,false); //偵測按下按鍵的行為
+body.addEventListener('mouseover', checkElementType ,false);
