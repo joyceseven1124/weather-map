@@ -1,0 +1,275 @@
+svg {
+  max-width: 90%;
+  height: 90vh;
+  transform: translateX(40%) translateY(20px);
+}
+
+path {
+  stroke: var(--storke); //線條的背景是stroke
+  stroke-width: 4.5;
+  fill: transparent; //SVG的背景是fill
+  transition: 0.4s;
+
+  &:hover {
+    fill: var(--stroke-fill);
+    transform: translate(-5px, -5px);
+  }
+}
+
+.title {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  writing-mode: vertical-lr;
+  font-size: 2rem;
+}
+
+.walking {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  width: 150px;
+  animation: 7s linear walkingMotion infinite;
+
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+@keyframes walkingMotion {
+  0% {
+    left: 0;
+    scale: 1;
+    transform: translateY(0px);
+  }
+
+  5% {
+    left: 5%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+  10% {
+    left: 10;
+    scale: 1;
+    transform: translateY(0px);
+  }
+
+  15% {
+    left: 15%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+  20% {
+    left: 20%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+
+  25% {
+    left: 25%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+  30% {
+    left: 30%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+
+  35% {
+    left: 35%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+  40% {
+    left: 40%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+
+  45% {
+    left: 45%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+
+  50% {
+    left: 50%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+  55% {
+    left: 55%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+
+  60% {
+    left: 60%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+  65% {
+    left: 65%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+
+  70% {
+    left: 70%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+  75% {
+    left: 75%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+
+  80% {
+    left: 80%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+  85% {
+    left: 85%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+
+  90% {
+    left: 90%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+  95% {
+    left: 95%;
+    scale: 1;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    left: 100%;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes walkingMotion_mobile {
+  0% {
+    left: 0;
+    transform: translateY(0px);
+  }
+
+  20% {
+    left: 20%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+  40% {
+    left: 40%;
+    scale: 1;
+    transform: translateY(0px);
+  }
+
+  60% {
+    left: 60%;
+    scale: 1.2;
+    transform: translateY(-50px);
+  }
+
+  80% {
+    left: 80%;
+    scale: 1;
+    transform: translateY(-70px);
+  }
+
+  100% {
+    left: 100%;
+    scale: 1.2;
+    transform: translateY(0px);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  svg {
+    transform: translateY(50px);
+  }
+}
+@media screen and (max-width: 415px) {
+  svg {
+    transform: translateY(-40px);
+  }
+
+  .walking {
+    bottom: 0px;
+    width: 80px;
+    animation: 2.5s linear walkingMotion_mobile infinite;
+  }
+}
+
+.citySelector-container {
+  position: absolute;
+  z-index: 2;
+  display: none;
+  width: min(80%, 400px);
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#close {
+  position: fixed;
+  top: 10px;
+  right: 25px;
+  z-index: 4;
+  height: 50px;
+}
+
+.citySelector {
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 5px dashed;
+  font-size: 1.5rem;
+  background-color: var(--selector-bg);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  outline: 15px solid var(--selector-bg);
+  outline-offset: 0px;
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    border-radius: 100vw;
+    background-color: var(--selector-bg);
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100vw;
+    background-color: rgb(225, 225, 225);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    border-radius: 100vw;
+    background: #555;
+  }
+  li {
+    width: 100%;
+    list-style-type: none;
+    padding-inline: 40px;
+    margin-bottom: 5px;
+  }
+}
+
+.arrow {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
