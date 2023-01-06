@@ -6,7 +6,8 @@
 
 @font-face {
   font-family: "MyWebFont";
-  src: url("../assets/Cubic_11_1.013_R.woff2") format("woff2"), url("../assets/Cubic_11_1.013_R.woff") format("woff");
+  src: url("../assets/Cubic_11_1.013_R.woff2") format("woff2"),
+    url("../assets/Cubic_11_1.013_R.woff") format("woff");
 }
 
 :root {
@@ -97,7 +98,6 @@ path:hover {
   font-size: 2rem;
 }
 
-
 .click {
   position: absolute;
   top: 36%;
@@ -105,8 +105,8 @@ path:hover {
   z-index: 1;
 }
 
-.click>img {
-  width: 40%
+.click > img {
+  width: 40%;
 }
 
 .walking {
@@ -452,8 +452,6 @@ path:hover {
   }
 }
 
-
-
 @media screen and (max-width: 1400px) {
   #container {
     background-image: url(../assets/backgrond-z2.png);
@@ -462,14 +460,27 @@ path:hover {
     background-repeat: no-repeat;
   }
 
-
-  .title {
+  .titleOutside {
     position: absolute;
+    display: block;
     top: 12%;
     left: 10%;
+  }
+
+  .time {
     -ms-writing-mode: tb-lr;
     /* writing-mode: vertical-lr; */
-    font-size: 2.3rem;
+    top: 10%;
+    left: 19%;
+    font-size: 1.7rem;
+    margin-left: 5px;
+    margin-bottom: 2px;
+  }
+
+  .title {
+    -ms-writing-mode: tb-lr;
+    /* writing-mode: vertical-lr; */
+    font-size: 2rem;
   }
 
   .click {
@@ -479,11 +490,10 @@ path:hover {
     z-index: 1;
   }
 
-  .click>img {
-    width: 50%
+  .click > img {
+    width: 50%;
   }
 }
-
 
 @media screen and (max-width: 1100px) {
   #container {
@@ -494,13 +504,29 @@ path:hover {
     background-repeat: no-repeat;
   }
 
-  .title {
+  .titleOutside {
     position: absolute;
+    display: block;
+    top: 6%;
+    left: 10%;
+  }
+
+  .time {
+    -ms-writing-mode: tb-lr;
+    /* writing-mode: vertical-lr; */
+    top: 10%;
+    left: 19%;
+    font-size: 1.7rem;
+    margin-left: 5px;
+    margin-bottom: 2px;
+  }
+
+  .title {
     top: 6%;
     left: 10%;
     -ms-writing-mode: tb-lr;
     /* writing-mode: vertical-lr; */
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
 
   .click {
@@ -510,12 +536,10 @@ path:hover {
     z-index: 1;
   }
 
-  .click>img {
-    width: 150px
+  .click > img {
+    width: 150px;
   }
-
 }
-
 
 @media screen and (max-width: 920px) {
   #container {
@@ -523,28 +547,42 @@ path:hover {
     background-image: url(../assets/tw-vertical-background.png);
   }
 
-  .title {
+  .titleOutside {
     position: absolute;
+    display: block;
+    top: 6%;
+    left: 10%;
+  }
+
+  .time {
+    -ms-writing-mode: tb-lr;
+    /* writing-mode: vertical-lr; */
+    top: 10%;
+    left: 19%;
+    font-size: 1.7rem;
+    margin-left: 5px;
+    margin-bottom: 2px;
+  }
+
+  .title {
     top: 6%;
     left: 10%;
     -ms-writing-mode: tb-lr;
     /* writing-mode: vertical-lr; */
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
 
   .click {
     position: absolute;
-    top: 16%;
+    top: 17%;
     left: 12%;
     z-index: 1;
   }
 
-  .click>img {
-    width: 50%
+  .click > img {
+    width: 50%;
   }
 }
-
-
 
 @media screen and (max-width: 415px) {
   .walking {
@@ -554,9 +592,25 @@ path:hover {
     animation: 2.5s linear walkingMotion_mobile infinite;
   }
 
-  .title {
+  .titleOutside {
     position: absolute;
+    display: block;
     top: 4%;
+    left: 10%;
+  }
+
+  .time {
+    -ms-writing-mode: tb-lr;
+    /* writing-mode: vertical-lr; */
+    top: 10%;
+    left: 19%;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    margin-bottom: 1.2px;
+  }
+
+  .title {
+    top: 6%;
     left: 10%;
     -ms-writing-mode: tb-lr;
     /* writing-mode: vertical-lr; */
@@ -565,13 +619,19 @@ path:hover {
 
   .click {
     position: absolute;
-    top: 15%;
+    top: 18%;
     left: 12%;
     z-index: 1;
   }
 
-  .click>img {
-    width: 30%
+  .click > img {
+    width: 30%;
+  }
+
+  .svg {
+    max-width: 100vw;
+    height: 90vh;
+    transform: translateX(0%) translateY(20px);
   }
 }
 
@@ -657,7 +717,7 @@ path:hover {
 }
 
 .now_place {
-  line-height: 40px;
+  line-height: 45px;
 }
 
 .modal {
@@ -795,6 +855,7 @@ path:hover {
 @media screen and (max-width: 950px) {
   .modal.active {
     padding-left: 30px;
+    padding-right: 30px;
   }
 }
 
@@ -810,13 +871,12 @@ path:hover {
   .modal h4 {
     font-size: 30px;
   }
-
-
 }
 
 @media screen and (max-width: 600px) {
   .modal.active {
     padding-left: 25px;
+    padding-right: 25px;
   }
 
   .weather {
@@ -842,6 +902,7 @@ path:hover {
 
   .modal.active {
     padding-left: 20px;
+    padding-right: 20px;
   }
 
   .modal h1 {
@@ -849,21 +910,26 @@ path:hover {
   }
 
   .modal h4 {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 
-@media screen and (max-width: 398px) {
+@media screen and (max-width: 403px) {
   .weather {
     width: 100px;
   }
 
+  .modal {
+    min-height: 400px;
+  }
+
   .modal h1 {
-    font-size: 24px;
+    font-size: 23px;
   }
 
   .modal h4 {
-    font-size: 20px;
+    font-size: 19px;
+    line-height: 32px;
   }
 }
 
