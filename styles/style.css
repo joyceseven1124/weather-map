@@ -59,6 +59,7 @@ svg {
   height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: start;
 }
 
 path {
@@ -73,14 +74,29 @@ path:hover {
   transform: translate(-5px, -5px);
 }
 
-.title {
+.titleOutside {
   position: absolute;
+  display: block;
   top: 12%;
   left: 18%;
+}
+
+.time {
   -ms-writing-mode: tb-lr;
   /* writing-mode: vertical-lr; */
-  font-size: 2.3rem;
+  top: 10%;
+  left: 19%;
+  font-size: 1.7rem;
+  margin-left: 5px;
+  margin-bottom: 2px;
 }
+
+.title {
+  -ms-writing-mode: tb-lr;
+  /* writing-mode: vertical-lr; */
+  font-size: 2rem;
+}
+
 
 .click {
   position: absolute;
@@ -786,6 +802,16 @@ path:hover {
   .weather {
     width: 180px;
   }
+
+  .modal h1 {
+    font-size: 44px;
+  }
+
+  .modal h4 {
+    font-size: 30px;
+  }
+
+
 }
 
 @media screen and (max-width: 600px) {
@@ -798,9 +824,17 @@ path:hover {
     right: 50%;
     transform: translateX(50%);
   }
+
+  .modal h1 {
+    font-size: 36px;
+  }
+
+  .modal h4 {
+    font-size: 28px;
+  }
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 500px) {
   .modal {
     padding: 10px;
     height: 300px;
@@ -811,7 +845,7 @@ path:hover {
   }
 
   .modal h1 {
-    font-size: 27px;
+    font-size: 27.5px;
   }
 
   .modal h4 {
@@ -819,17 +853,17 @@ path:hover {
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 398px) {
   .weather {
     width: 100px;
   }
 
   .modal h1 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .modal h4 {
-    font-size: 23px;
+    font-size: 20px;
   }
 }
 
