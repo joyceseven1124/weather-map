@@ -3,7 +3,6 @@ console.log("TEST.");
 const bodyEl = document.querySelector("body");
 const overlayEl = document.querySelector(".overlay ");
 const modalEl = document.querySelector(".modal ");
-const citySelectorContainer = document.querySelector(".citySelector-container");
 
 const countryList = [
   {
@@ -95,19 +94,18 @@ day = now_Date.toISOString().split(".")[0];
 
 async function fetchWeather(region, day) {
   let url = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-480FD02B-2155-49AB-B24B-1796E44F6333&locationName=${region}`;
-  citySelectorclose();
+
   const response = await fetch(url);
   const rawData = await response.json();
 
   const records = rawData["records"]["location"][0]["weatherElement"];
   const Wx = records[0]["time"][0]["parameter"]["parameterName"];
-  const WxValue = records[0]["time"][0]["parameter"]["parameterValue"];
   const PoP = records[1]["time"][0]["parameter"]["parameterName"];
   const MinT = records[2]["time"][0]["parameter"]["parameterName"];
   const CI = records[3]["time"][0]["parameter"]["parameterName"];
   const MaxT = records[4]["time"][0]["parameter"]["parameterName"];
 
-  const regionWeather = [Wx, PoP, MinT, CI, MaxT, WxValue];
+  const regionWeather = [Wx, PoP, MinT, CI, MaxT];
 
   const weatherInfo = {
     region: region,
@@ -117,7 +115,6 @@ async function fetchWeather(region, day) {
     MinT: regionWeather[2],
     CI: regionWeather[3],
     MaxT: regionWeather[4],
-    WxValue: regionWeather[5],
   };
 
   console.log(weatherInfo);
@@ -149,51 +146,8 @@ async function fetchWeather(region, day) {
     "°C";
   modalEl.classList.add("active");
   overlayEl.style.display = "block";
-  modalEl.style.opacity = 1;
+  modalEl.style.opacity = 0.9;
   bodyEl.style.overflowY = "hidden";
-
-  const weatherTypes = {
-    isClear: [1],
-    isSunnywithCloudy: [2, 3, 19, 24, 25, 26],
-    isOvercast: [4, 5, 6, 7, 9, 20, 27, 28],
-    isThunderstorm: [15, 16, 17, 18, 21, 22, 33, 34, 35, 36, 41],
-    isRain: [8, 10, 11, 12, 13, 14, 29, 30, 31, 32, 38, 39],
-    isSnowing: [23, 37, 42],
-  };
-
-  //console.log(weatherInfo["WxValue"])
-  weatherNumber = Number(weatherInfo["WxValue"]);
-  const weatherIcon = document.querySelector("#weatherIcon");
-  const weatherPlace = document.querySelector(".weather");
-
-  if (weatherTypes["isClear"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "var(--isClear)";
-    weatherIcon.src = "./assets/isClear.png";
-  } else if (weatherTypes["isOvercast"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "var(--isOvercast)";
-    weatherIcon.src = "./assets/isOvercast.png";
-    weatherPlace.style.bottom = "60px";
-  } else if (weatherTypes["isThunderstorm"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "var(--isThunderstorm)";
-    weatherIcon.src = "./assets/isThunderstorm.png";
-    weatherPlace.style.bottom = "10px";
-  } else if (weatherTypes["isRain"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "var(--isRain)";
-    weatherIcon.src = "./assets/isRain.png";
-    weatherPlace.style.bottom = "40px";
-  } else if (weatherTypes["isSnowing"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "var(--isSnowing)";
-    weatherIcon.src = "./assets/isSnowing.png";
-    weatherPlace.style.bottom = "20px";
-  } else if (weatherTypes["isSunnywithCloudy"].includes(weatherNumber)) {
-    overlayEl.style.backgroundColor = "var(--isSunnywithCloudy)";
-    weatherIcon.src = "./assets/isSunnywithCloudy.png";
-    weatherPlace.style.bottom = "60px";
-  }
-  //測試區
-  //overlayEl.style.backgroundColor = "yellow";
-  //weatherIcon.src = "./assets/isSunnywithCloudy.png";
-  //weatherPlace.style.bottom = "60px";
 }
 
 for (const city of countryList) {
@@ -216,12 +170,18 @@ for (const city of countryList) {
 }
 
 function gethelp() {
-  citySelectorContainer.style.display = "block";
+  const citySelector = document.getElementById("citySelector");
+  citySelector.style.cssText = "display:block";
 }
 
-document.querySelector("#close").addEventListener("click", () => {
-  citySelectorContainer.style.display = "none";
-});
+for (let i = 0; i < 19; i++) {
+  document.getElementById("helpList" + i).addEventListener("click", (e) => {
+    console.log(e.target.textContent);
+    e.preventDefault();
+    region = e.target.textContent; //「電腦版」點擊後的幫助清單
+    fetchWeather(region, day);
+  });
+}
 
 document.querySelector(".overlay").addEventListener("click", () => {
   if (modalEl.classList.value === "modal active") {
@@ -233,15 +193,11 @@ document.querySelector(".overlay").addEventListener("click", () => {
   modalEl.classList.remove("active");
 });
 
-function citySelectorclose() {
-  citySelectorContainer.style.display = "none";
-}
-
-const menu = document.querySelector("citySelector-container");
 const arrow = document.getElementById("arrow");
 const items = document.querySelectorAll("li");
 const container = document.getElementById("citySelector");
 let currentItem = 0;
+
 document.addEventListener("keydown", function (event) {
   event.preventDefault();
   switch (event.key) {
@@ -258,7 +214,6 @@ document.addEventListener("keydown", function (event) {
           container.scrollTop = items[currentItem].offsetTop;
         }
       }
-      region = items[currentItem].textContent;
       break;
     case "ArrowUp":
       // move the arrow to the previous item
@@ -267,79 +222,6 @@ document.addEventListener("keydown", function (event) {
         arrow.style.top = items[currentItem].offsetTop + "px";
         container.scrollTop = items[currentItem].offsetTop;
       }
-      region = items[currentItem].textContent;
       break;
-
-    case "Enter":
-      if (citySelectorContainer.style.display === "none") {
-        return;
-      } else {
-        //region = items[currentItem].textContent;
-        fetchWeather(region, day);
-      }
-      citySelectorclose();
   }
 });
-
-document.addEventListener("touchstart", function (event) {
-  // get the position of the touch
-  const touchY = event.target.offsetTop;
-
-  // find the closest li element to the touch position
-  let closestItem = null;
-  let closestDistance = Infinity;
-  for (const item of items) {
-    const distance = Math.abs(touchY - item.offsetTop);
-    if (distance < closestDistance) {
-      closestItem = item;
-      closestDistance = distance;
-    }
-  }
-
-  // move the arrow to the closest li element
-  //arrow.style.left = closestItem.offsetLeft + 'px';
-  //arrow.style.top = closestItem.offsetTop + 'px';
-});
-
-items.forEach((element) => {
-  element.addEventListener("mouseover", mouseEnterEffect);
-  element.addEventListener("mouseout", mouseMoveEffect);
-});
-
-function mouseEnterEffect(e) {
-  arrow.style.top = this.offsetTop + "px";
-  region = this.textContent;
-  arrow.style.backgroundColor = "rgba(0, 0, 0, 0)";
-  this.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-}
-
-function mouseMoveEffect(e) {
-  arrow.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-  this.style.backgroundColor = "";
-  arrow.classList.add(this.textContent);
-  if (arrow.classList.length > 2) {
-    arrow.classList.remove(arrow.classList[1]);
-  }
-}
-
-arrow.addEventListener("click", (e) => {
-  region = arrow.classList[1];
-  fetchWeather(region, day);
-});
-
-const body = document.body;
-function checkElementType(e) {
-  if (e.type === "keydown") {
-    items.forEach((element) => {
-      element.removeEventListener("mouseover", mouseEnterEffect);
-      element.removeEventListener("mouseout", mouseMoveEffect);
-    });
-  } else {
-    items.forEach((element) => {
-      element.addEventListener("mouseover", mouseEnterEffect);
-      element.addEventListener("mouseout", mouseMoveEffect);
-    });
-  }
-}
-body.addEventListener("keydown", checkElementType, false); //偵測按下按鍵的行為
-body.addEventListener("mouseover", checkElementType, false);
