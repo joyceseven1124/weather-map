@@ -272,7 +272,7 @@ document.addEventListener("keydown", function (event) {
 
     case "Enter":
       if (citySelectorContainer.style.display === "none") {
-        region = "";
+        return;
       } else {
         //region = items[currentItem].textContent;
         fetchWeather(region, day);
