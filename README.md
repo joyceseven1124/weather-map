@@ -4,7 +4,10 @@
 
 <img width="700" src="./assets/web.png" >
 
-#### 以基本靜態網頁三元素(HTML、CSS、Javascript)組成的即時天氣網頁。復刻懷舊遊戲(GBA)的像素感！
+### 復古口味 4fun 一下，即時天氣網頁
+
+- 基本靜態網頁三元素(HTML、CSS、Javascript)組成
+- 加點 neo-brutalism，再加點 8-bit 組成我們的 Web design
 
 <img width="700" src="./assets/weatherCard.png" >
 
@@ -20,6 +23,7 @@
    * 天氣卡主視覺
    * 天氣卡背景圖
    * 撰寫 README
+   * 其他功能合併修正
    * Repositories Owner
 
    - code reviewer and merge banch
@@ -27,13 +31,21 @@
 1. Jamie Yu 🌟
    - 串接天氣 API 資料
    - 實作時間功能
+   * 其他功能合併修正
 1. Joyce Liu 🌟
-   - 實作偵測選單滑鼠功能
+
    - 鍵盤動作功能
+
    * 天氣圖 JS 邏輯撰寫
+
+   - 實作偵測選單滑鼠功能
+
+   * 其他功能合併修正
+
 1. Zora Wu 🌟
-   - 繪製天氣圖及其他素材
    - 調整 RWD
+   - 繪製 Weather Icons 及其他素材
+   * 其他功能合併修正
 1. Owen Fang 🌟
    - 初版鍵盤動作功能
    * 上下切換功能
