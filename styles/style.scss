@@ -11,60 +11,46 @@
 }
 
 :root {
-  --stroke-fill: #5b6fb4;
-  --dark-blue: #190cab;
-  --red: hsl(0, 63%, 48%);
-  --modal-bg: rgb(255, 252, 214);
-  --tw-bg: #f2d05a;
+  --stroke-fill: #2c6ac8;
+  --modal-bg: #fff;
   --blue: #2c6ac8;
   --storke: #1b1a19;
-  --tw-cyan: #01afae;
+  --tw-bg: #bef9f9;
+  --isClear: yellow;
+  --isSunnywithCloudy: #aff758;
+  --isOvercast: gray;
+  --isThunderstorm: #d33030;
+  --isRain: #4454d4;
+  --isSnowing: #ff66ff;
+  --selector-bg: rgb(126, 125, 122);
+  --black-border: 5px solid black;
 }
 
 body {
   width: 100%;
   font-family: "MyWebFont", Fallback, sans-serif;
   cursor: url(../assets/cursor-hand.png) 2 2, pointer;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-<<<<<<< HEAD
-  background-color: url(/tv.png);
-}
-
-@media screen and (max-width: 1400px) {
-  svg {
-    transform: translateY(50px);
-  }
-}
-
-@media screen and (max-width: 415px) {
-  svg {
-    transform: translateY(50px);
-  }
-  .modal {
-    padding: 10px;
-    height: 300px;
-  }
-  .modal h1 {
-    font-size: 28px;
-  }
-  .modal h4 {
-    font-size: 25px;
-  }
-=======
-  background-color: #bef9f9;
-  // background-image: url(../assets/4.png);
+  height: 100vh;
+  // min-height: 100vh;
+  background-color: var(--tw-bg);
+  background-image: url(../assets/tw-bg.png);
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
->>>>>>> 33bce708c9ab43681d9597de7fa313bcdd1594d7
+}
+
+@media (orientation: portrait) {
+  #container {
+    background-size: contain;
+    background-image: url(../assets/tw-vertical-background.png);
+  }
 }
 
 @import "./tw";
 @import "./modal";
-@import "./sunny";
