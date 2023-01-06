@@ -44,12 +44,6 @@ body {
   background-repeat: no-repeat;
 }
 
-/* @media (orientation: portrait) {
-  #container {
-    background-size: contain;
-    background-image: url(../assets/tw-vertical-background.png);
-  }
-} */
 svg {
   max-width: 90vw;
   height: 90vh;
@@ -83,8 +77,6 @@ path:hover {
 }
 
 .time {
-  -ms-writing-mode: tb-lr;
-  /* writing-mode: vertical-lr; */
   top: 10%;
   left: 19%;
   font-size: 1.7rem;
@@ -93,8 +85,6 @@ path:hover {
 }
 
 .title {
-  -ms-writing-mode: tb-lr;
-  /* writing-mode: vertical-lr; */
   font-size: 2rem;
 }
 
@@ -468,8 +458,6 @@ path:hover {
   }
 
   .time {
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     top: 10%;
     left: 19%;
     font-size: 1.7rem;
@@ -478,8 +466,6 @@ path:hover {
   }
 
   .title {
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     font-size: 2rem;
   }
 
@@ -512,8 +498,6 @@ path:hover {
   }
 
   .time {
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     top: 10%;
     left: 19%;
     font-size: 1.7rem;
@@ -524,8 +508,6 @@ path:hover {
   .title {
     top: 6%;
     left: 10%;
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     font-size: 2rem;
   }
 
@@ -555,8 +537,6 @@ path:hover {
   }
 
   .time {
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     top: 10%;
     left: 19%;
     font-size: 1.7rem;
@@ -567,8 +547,6 @@ path:hover {
   .title {
     top: 6%;
     left: 10%;
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     font-size: 2rem;
   }
 
@@ -600,8 +578,6 @@ path:hover {
   }
 
   .time {
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     top: 10%;
     left: 19%;
     font-size: 1.2rem;
@@ -612,8 +588,6 @@ path:hover {
   .title {
     top: 6%;
     left: 10%;
-    -ms-writing-mode: tb-lr;
-    /* writing-mode: vertical-lr; */
     font-size: 1.5rem;
   }
 
@@ -668,9 +642,6 @@ path:hover {
   scrollbar-width: thin;
   outline: 15px solid var(--selector-bg);
   outline-offset: 0px;
-  /* Track */
-  /* Handle */
-  /* Handle on hover */
 }
 
 .citySelector::-webkit-scrollbar {
