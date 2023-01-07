@@ -102,7 +102,13 @@ today_now_time = now_Date.toISOString().split(".")[0].split("T")[1];
 // }
 
 var startTime = new Date().getTime();
+var hour = Number(today_now_time.split(":")[0]);
+var minute = Number(today_now_time.split(":")[1]);
 var second = Number(today_now_time.split(":")[2]);
+
+today_year = today_now_date.split("-")[0];
+today_month = today_now_date.split("-")[1];
+today_day = today_now_date.split("-")[2];
 
 // 用來模擬延遲 Queue 的動作
 window.setInterval(function () {
@@ -114,33 +120,25 @@ window.setInterval(function () {
   var endTime = new Date().getTime();
   if (second == 60) {
     second = 0;
+    minute++;
+  } else if (minute == 60) {
+    minute = 0;
+    hour++;
+  } else if (hour == 24) {
+    hour = 0;
   }
+
   second++;
   updatetime(second);
 }, 1000);
 
 function updatetime(second) {
-  if (second == 60) {
-    second = "00";
-  } else if (second == 1) {
-    second = "01";
-  } else if (second == 2) {
-    second = "02";
-  } else if (second == 3) {
-    second = "03";
-  } else if (second == 4) {
-    second = "04";
-  } else if (second == 5) {
-    second = "05";
-  } else if (second == 6) {
-    second = "06";
-  } else if (second == 7) {
-    second = "07";
-  } else if (second == 8) {
-    second = "08";
-  } else if (second == 9) {
-    second = "09";
-  }
+  const timeevent = new Date(
+    Date.UTC(today_year, today_month, today_day, hour, minute, second)
+  );
+  now_time = timeevent
+    .toLocaleString("en-GB", { timeZone: "UTC" })
+    .split(",")[1];
 
   our_today_now_date =
     today_now_date.split("-")[0] +
@@ -148,12 +146,7 @@ function updatetime(second) {
     today_now_date.split("-")[1] +
     "/" +
     today_now_date.split("-")[2]; //今日日期
-  our_today_now_time =
-    today_now_time.split(":")[0] +
-    ":" +
-    today_now_time.split(":")[1] +
-    ":" +
-    second;
+  our_today_now_time = now_time;
 
   now_clock = our_today_now_date + " " + our_today_now_time; //現在時刻
 
